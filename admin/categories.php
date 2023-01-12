@@ -1100,5 +1100,3 @@ $('#products_date_available').datepicker({
 
 
 
-
-
