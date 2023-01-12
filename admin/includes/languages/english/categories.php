@@ -91,7 +91,6 @@ define('TEXT_PRODUCTS_PRICE_GROSS', 'Products Price (Gross):');
 define('TEXT_PRODUCTS_WEIGHT', 'Products Weight:');
 define('TEXT_PRODUCTS_HEIGHT', 'Products Height:');
 define('TEXT_PRODUCTS_WIDTH', 'Products Width:');
-define('TEXT_PRODUCTS_DEPTH', 'Products Depth:');
 define('TEXT_PRODUCTS_LENGTH', 'Products Length:');
 
 define('EMPTY_CATEGORY', 'Empty Category');
