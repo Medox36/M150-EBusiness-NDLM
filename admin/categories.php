@@ -685,15 +685,15 @@ function showPiDelConfirm(piId) {
           </tr>
           <tr>
               <td class="main"><?php echo TEXT_PRODUCTS_HEIGHT; ?></td>
-              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_height', $pInfo->products_height, "max=1000; min=0; sep=0.001", false, "number", true); ?></td>
+              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_height', $pInfo->products_height, "max='1000' min='0' step='0.001'", false, "number", true); ?></td>
           </tr>
           <tr>
               <td class="main"><?php echo TEXT_PRODUCTS_WIDTH; ?></td>
-              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_width', $pInfo->products_width, "max=1000; min=0; sep=0.001", false, "number", true); ?></td>
+              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_width', $pInfo->products_width, "max='1000' min='0' step='0.001'", false, "number", true); ?></td>
           </tr>
           <tr>
               <td class="main"><?php echo TEXT_PRODUCTS_LENGTH; ?></td>
-              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_length', $pInfo->products_length, "max=1000; min=0; sep=0.001", false, "number", true); ?></td>
+              <td class="main">(m)<?php echo tep_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . tep_draw_input_field('products_length', $pInfo->products_length, "max='1000' min='0' step='0.001'", false, "number", true); ?></td>
           </tr>
         </table></td>
       </tr>
