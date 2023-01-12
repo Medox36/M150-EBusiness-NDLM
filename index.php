@@ -99,6 +99,11 @@
                          'PRODUCT_LIST_PRICE' => PRODUCT_LIST_PRICE,
                          'PRODUCT_LIST_QUANTITY' => PRODUCT_LIST_QUANTITY,
                          'PRODUCT_LIST_WEIGHT' => PRODUCT_LIST_WEIGHT,
+        'PRODUCT_LIST_HEIGHT' => PRODUCT_LIST_HEIGHT,
+        'PRODUCT_LIST_WIDTH' => PRODUCT_LIST_WIDTH,
+        'PRODUCT_LIST_DEPTH' => PRODUCT_LIST_DEPTH,
+        'PRODUCT_LIST_LENGTH' => PRODUCT_LIST_LENGTH,
+                         //hjklhjhlkjhkjh
                          'PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
                          'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
 
