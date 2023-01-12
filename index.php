@@ -103,7 +103,6 @@
         'PRODUCT_LIST_WIDTH' => PRODUCT_LIST_WIDTH,
         'PRODUCT_LIST_DEPTH' => PRODUCT_LIST_DEPTH,
         'PRODUCT_LIST_LENGTH' => PRODUCT_LIST_LENGTH,
-                         //hjklhjhlkjhkjh
                          'PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
                          'PRODUCT_LIST_BUY_NOW' => PRODUCT_LIST_BUY_NOW);
 
