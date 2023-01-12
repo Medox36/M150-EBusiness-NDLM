@@ -11,7 +11,7 @@
 */
 
   class shoppingCart {
-    var $contents, $total, $weight;
+    var $contents, $total, $weight, $height, $width, $depth, $length;
 
     function shoppingCart() {
       $this->reset();
@@ -191,6 +191,10 @@
     function calculate() {
       $this->total = 0;
       $this->weight = 0;
+      $this->height = 0;
+      $this->width = 0;
+      $this->depth = 0;
+      $this->length = 0;
       if (!is_array($this->contents)) return 0;
 
       reset($this->contents);
@@ -198,12 +202,16 @@
         $qty = $this->contents[$products_id]['qty'];
 
 // products price
-        $product_query = tep_db_query("select products_id, products_price, products_tax_class_id, products_weight from " . TABLE_PRODUCTS . " where products_id='" . (int)tep_get_prid($products_id) . "'");
+        $product_query = tep_db_query("select products_id, products_price, products_tax_class_id, products_weight, products_height, products_width, products_depth, products_length from " . TABLE_PRODUCTS . " where products_id='" . (int)tep_get_prid($products_id) . "'");
         if ($product = tep_db_fetch_array($product_query)) {
           $prid = $product['products_id'];
           $products_tax = tep_get_tax_rate($product['products_tax_class_id']);
           $products_price = $product['products_price'];
           $products_weight = $product['products_weight'];
+          $products_height = $product['products_height'];
+          $products_width = $product['products_width'];
+          $products_depth = $product['products_depth'];
+          $products_length = $product['products_length'];
 
           $specials_query = tep_db_query("select specials_new_products_price from " . TABLE_SPECIALS . " where products_id = '" . (int)$prid . "' and status = '1'");
           if (tep_db_num_rows ($specials_query)) {
@@ -213,6 +221,10 @@
 
           $this->total += tep_add_tax($products_price, $products_tax) * $qty;
           $this->weight += ($qty * $products_weight);
+          $this->height += ($qty * $products_height);
+          $this->width += ($qty * $products_width);
+          $this->depth += ($qty * $products_depth);
+          $this->length += ($qty * $products_length);
         }
 
 // attributes price
@@ -257,7 +269,7 @@
       $products_array = array();
       reset($this->contents);
       while (list($products_id, ) = each($this->contents)) {
-        $products_query = tep_db_query("select p.products_id, pd.products_name, p.products_model, p.products_price, p.products_weight, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . (int)tep_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
+        $products_query = tep_db_query("select p.products_id, pd.products_name, p.products_model, p.products_price, p.products_weight,p.products_height,p.products_width,p.products_depth,p.products_length, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . (int)tep_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
         if ($products = tep_db_fetch_array($products_query)) {
           $prid = $products['products_id'];
           $products_price = $products['products_price'];
@@ -274,6 +286,10 @@
                                     'price' => $products_price,
                                     'quantity' => $this->contents[$products_id]['qty'],
                                     'weight' => $products['products_weight'],
+              'height' => $products['products_height'],
+              'width' => $products['products_width'],
+              'depth' => $products['products_depth'],
+              'length' => $products['products_length'],
                                     'final_price' => ($products_price + $this->attributes_price($products_id)),
                                     'tax_class_id' => $products['products_tax_class_id'],
                                     'attributes' => (isset($this->contents[$products_id]['attributes']) ? $this->contents[$products_id]['attributes'] : ''));
@@ -292,6 +308,30 @@
       $this->calculate();
 
       return $this->weight;
+    }
+
+    function show_height() {
+      $this->calculate();
+
+      return $this->height;
+    }
+
+    function show_width() {
+      $this->calculate();
+
+      return $this->width;
+    }
+
+    function show_depth() {
+      $this->calculate();
+
+      return $this->depth;
+    }
+
+    function show_length() {
+      $this->calculate();
+
+      return $this->length;
     }
 
     function unserialize($broken) {
